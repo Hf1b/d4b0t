@@ -3,7 +3,7 @@ module.exports = {
   level: 'BOT_OWNER',
   run: (msg, args, bot) => {
     const date = new Date()
-    err = false
+    let err, res
     try {
       res = eval(args.join(' '))
     } catch(e) {

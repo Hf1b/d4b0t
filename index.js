@@ -49,6 +49,7 @@ for(cat of fs.readdirSync(commandsDir)) {
 }
 
 bot.once('ready', () => {
+  bot.loadStamp = Date.now()
   bot.commandCache()
   console.log('Загружено команд: ' + Object.keys(bot.loadedCommands).length)
   console.log(`Бот грузился ${(new Date() - date) / 1000}с. ${bot.user.tag} (${bot.user.id})`)

@@ -4,11 +4,11 @@ module.exports = {
   info: 'Рандомный робот',
   usage: '[name]',
   run: async (msg, args, bot) => {
-    name = args.join(' ')
+    let name = args.join(' ')
     if(!name) {
       name += Math.random()
     }
-    res = await fetch('https://robohash.org/' + encodeURI(name) + '.png')
+    let res = await fetch('https://robohash.org/' + encodeURI(name) + '.png')
     res = await res.buffer()
     msg.reply({ files: [ { attachment: res, name: 'robot.png' } ] })
   }
