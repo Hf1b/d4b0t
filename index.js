@@ -58,7 +58,13 @@ bot.once('ready', () => {
 bot.on('message', async msg => {
   if(msg.author.bot) return
   if(!msg.content.startsWith(prefix)) return
-  const args = msg.content.slice(prefix.length).split(' ')
+  const content = msg.content.slice(prefix.length)
+  const args = content.match(/".+?"|'.+?'|[^\s]+/g).map(i => {
+    if(i[0] == i[i.length-1] && (i[0] == '"' || i[0] == "'")) {
+      return i.slice(1, i.length-1)
+    }
+    return i
+  })
   const cmd = args.shift()
 
   if(bot.loadedCommands[cmd] && bot.loadedCommands[cmd].run) {

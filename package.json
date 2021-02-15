@@ -1,5 +1,5 @@
 {
-  "name": "d3b0t",
+  "name": "d4b0t",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "Hf1b",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "node-fetch": "^2.6.1"
   }
 }
