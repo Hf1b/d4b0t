@@ -1,12 +1,12 @@
 module.exports = {
   info: 'Информация о командах',
   run: (msg, args, bot) => {
-    str = 'D4b0t - бот, построенный на D.js\n**Список команд**\n'
+    str = 'D4b0t - бот, построенный на D.js\n<> - Обязательный аргумент\n[] - Необязательный аргумень\n**Список команд**\n'
     for(cat in bot.commands) {
       str += cat + ':\n'
       for(cmdName in bot.commands[cat]) {
         cmd = bot.commands[cat][cmdName]
-        str += '  ' + cmdName + (bot.loadedCommands[cmdName] ? '' : ' [ВЫКЛ]') +
+        str += '  ' + cmdName + (cmd.usage ? ' ' + cmd.usage : '') + (bot.loadedCommands[cmdName] ? '' : ' [ВЫКЛ]') +
           ': ' + (cmd.info ? cmd.info : 'Описания нету') + '\n'
       }
     }
