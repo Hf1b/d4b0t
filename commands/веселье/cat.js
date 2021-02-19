@@ -1,10 +1,7 @@
-const fetch = require('node-fetch')
-
 module.exports = {
   info: 'Показ котов',
-  run: async (msg, args, bot) => {
-    let res = await fetch('https://api.thecatapi.com/v1/images/search')
-    res = await res.json()
-    msg.reply({ files: [ res[0].url ] })
+  run: async (msg, bot) => {
+    await bot.templates.theapi(msg,
+      'https://api.thecatapi.com/v1/images/search')
   }
 }

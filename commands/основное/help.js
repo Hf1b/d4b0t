@@ -1,6 +1,6 @@
 module.exports = {
   info: 'Информация о командах',
-  run: (msg, args, bot) => {
+  run: (msg, bot) => {
     str = 'D4b0t - бот, построенный на D.js\n<> - Обязательный аргумент\n[] - Необязательный аргумень\n**Список команд**\n'
     for(cat in bot.commands) {
       str += cat + ':\n'

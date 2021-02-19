@@ -1,11 +1,11 @@
 module.exports = {
   info: 'Выполнение кода',
   level: 'BOT_OWNER',
-  run: (msg, args, bot) => {
+  run: (msg, bot) => {
     const date = new Date()
     let err, res
     try {
-      res = eval(args.join(' '))
+      res = eval(msg.args.join(' '))
     } catch(e) {
       err = true
       res = e.toString()

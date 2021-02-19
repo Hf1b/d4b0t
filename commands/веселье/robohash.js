@@ -3,8 +3,8 @@ const fetch = require('node-fetch')
 module.exports = {
   info: 'Рандомный робот',
   usage: '[name]',
-  run: async (msg, args, bot) => {
-    let name = args.join(' ')
+  run: async (msg, bot) => {
+    let name = msg.args.join(' ')
     if(!name) {
       name += Math.random()
     }

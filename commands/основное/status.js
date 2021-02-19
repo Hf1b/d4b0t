@@ -1,9 +1,8 @@
-const path = require('path')
-const { declOfNum } = require(path.join(require.main.path, 'utils'))
-
 module.exports = {
   info: 'Статус бота',
-  run: async (msg, args, bot) => {
+  run: async (msg, bot) => {
+    let declOfNum = bot.utils.declOfNum
+
     let elapsed = Date.now() - bot.loadStamp
     let s = Math.floor((elapsed / 1000) % 60)
     let m = Math.floor((elapsed / (1000 * 60)) % 60)
