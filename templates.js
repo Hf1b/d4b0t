@@ -1,7 +1,8 @@
+let sharp
 try {
-  let sharp = require('sharp')
+  sharp = require('sharp')
 } catch {
-  let sharp = false
+  sharp = false
 }
 const fetch = require('node-fetch')
 
