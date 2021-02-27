@@ -1,6 +1,7 @@
 module.exports = {
   info: 'Создание голосования',
   usage: '<запрос> <вариант 1> [[вариант 2] ... [вариант n]]',
+  cooldown: 10,
   run: async (msg, bot) => {
     if(msg.args.length < 2) {
       msg.reply('Посмотрите правильное написание команды в команде help.')

@@ -18,6 +18,8 @@ const bot = new Discord.Client()
 bot.utils = require('./utils')
 bot.templates = require('./templates')
 
+bot.cooldown = {}
+
 const commandsDir = path.join(__dirname, 'commands')
 bot.loadedCommands = {}
 bot.commands = {}
@@ -25,6 +27,7 @@ bot.commandCache = () => {
   for(let cat in bot.commands) {
     for(let cmd in bot.commands[cat]) {
       bot.loadedCommands[cmd] = bot.commands[cat][cmd]
+      bot.cooldown[cmd] = {}
     }
   }
 }
@@ -84,6 +87,17 @@ bot.on('message', async msg => {
         msg.reply('Вы должны иметь право ' + current.level + ' для запуска команды.')
         return
       }
+    }
+
+    if(current.cooldown) {
+      if(bot.cooldown[cmd] && bot.cooldown[cmd][msg.author.id]) {
+        let ts = bot.cooldown[cmd][msg.author.id]
+        if(ts > Date.now()) {
+          msg.reply('Подождите ' + ((ts - Date.now()) / 1000) + 'с перед командой.')
+          return
+        }
+      }
+      bot.cooldown[cmd][msg.author.id] = Date.now() + current.cooldown * 1000
     }
 
     current.run(msg, bot)
