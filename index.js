@@ -1,4 +1,6 @@
-const prefix = '*'
+console.log('Загрузка...')
+
+const prefix = process.env.BOT_PREFIX || '*'
 const owners = ['485756276782006272']
 
 if(!process.env.BOT_TOKEN) {
@@ -42,11 +44,16 @@ for(let cat of fs.readdirSync(commandsDir)) {
   bot.commands[cat] = {}
   for(let cmd of fs.readdirSync(categoryDir)) {
     if(!cmd.endsWith('.js') || cmd.endsWith('.js.')) {
-      console.log('Команда ' + cmd + ' пропущена')
+      console.error('Команда ' + cmd + ' пропущена')
       return
     }
     cmd = cmd.split('.js')[0]
-    bot.commands[cat][cmd] = require(path.join(categoryDir, cmd))
+    console.log('Загрузка ' + cmd)
+    try {
+      bot.commands[cat][cmd] = require(path.join(categoryDir, cmd))
+    } catch(e) {
+      console.error('Ошибка:\n', e)
+    }
   }
 }
 

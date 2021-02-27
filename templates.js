@@ -1,7 +1,13 @@
-const sharp = require('sharp')
+try {
+  let sharp = require('sharp')
+} catch {
+  let sharp = false
+}
 const fetch = require('node-fetch')
 
 const compose = async (msg, bot, file) => {
+  if(!sharp) return
+
   let url = await bot.utils.findImage(msg, bot)
   if(!url) {
     msg.reply('Изображение не найдено')

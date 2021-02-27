@@ -73,6 +73,9 @@ const findImage = async (msg, bot) => {
   }
 }
 
+const pollEmojis = '1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ 🔟 🇦 🇧 🇨 🇩 🇪 🇫 🇬'.split(' ')
+const yesnoEmojis = '<:TickYes:698154195781681202> <:TickNo:698154196037271613>'.split(' ')
+
 module.exports = {
-  declOfNum, download, findImage
+  declOfNum, download, findImage, pollEmojis, yesnoEmojis
 }
